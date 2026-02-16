@@ -11,7 +11,7 @@ org-mariadb-jdbc-mariadb-java-client = "3.5.7" # https://central.sonatype.com/ar
 org-spongepowered-configurate-yaml = "4.2.0" # https://github.com/SpongePowered/Configurate/releases
 git-version = "4.3.0" # https://github.com/palantir/gradle-git-version/releases
 shadow = "9.3.1" # https://github.com/GradleUp/shadow/releases
-alpslib-io = "1.2.1" # https://mvn.alps-bte.com/service/rest/repository/browse/alps-bte/com/alpsbte/alpslib/alpslib-io/
+alpslib-io = "1.2.2" # https://mvn.alps-bte.com/service/rest/repository/browse/alps-bte/com/alpsbte/alpslib/alpslib-io/
 
 [libraries]
 com-alpsbte-alpslib-alpslib-utils = { module = "com.alpsbte.alpslib:alpslib-utils", version.ref = "com-alpsbte-alpslib-alpslib-utils" }
