@@ -22,7 +22,7 @@ import java.util.UUID;
 @Plugin(
         id = "langlibs-velocity",
         name = "langlibs-velocity",
-        version = "1.6",
+        version = "1.6.0",
         description = "Proxy side language preference store for LangLibs",
         authors = {"Cinnazeyy"}
 )

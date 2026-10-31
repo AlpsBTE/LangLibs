@@ -5,7 +5,6 @@
 plugins {
     java
     id("buildlogic.java-conventions")
-    alias(libs.plugins.palantir.git.version)
     alias(libs.plugins.gradleup.shadow)
 }
 
@@ -24,8 +23,7 @@ dependencies {
     implementation(libs.org.spongepowered.configurate.yaml)
 }
 
-val gitVersion: groovy.lang.Closure<String> by extra
-version = gitVersion() // last tag + commit distance + short hash
+version = "1.6.0"
 
 tasks.shadowJar {
     exclude("org/slf4j/**")
