@@ -46,6 +46,17 @@ public class LanguageUtil extends LanguageFileFactory {
         return languageFiles[0].getTranslation(key);
     }
 
+    /**
+     * Resolves a translation for a specific language, independent of the player's current locale.
+     */
+    public String get(Language language, String key) {
+        return Arrays.stream(languageFiles)
+                .filter(langFile -> langFile.getLanguage() == language)
+                .findFirst()
+                .orElse(languageFiles[0])
+                .getTranslation(key);
+    }
+
     @SuppressWarnings("unused")
     public String get(UUID playerUUID, String key) {
         return getLanguageFileByPlayer(playerUUID).getTranslation(key);

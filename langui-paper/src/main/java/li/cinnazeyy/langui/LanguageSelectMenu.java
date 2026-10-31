@@ -78,7 +78,7 @@ public class LanguageSelectMenu implements Listener {
         menuPlayer.sendMessage(
                 text(Objects.requireNonNull(LangUI.getPlugin().getConfig().getString("info-message-icon")))
                         .append(text(" » ", DARK_GRAY))
-                        .append(text(LangUtil.getInstance().get(menuPlayer, "info.changed-language"), GREEN)));
+                        .append(text(LangUtil.getInstance().get(lang, "info.changed-language"), GREEN)));
         menuPlayer.playSound(menuPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
         menu.close(menuPlayer);
     }
