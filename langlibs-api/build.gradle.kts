@@ -4,7 +4,7 @@ plugins {
     `maven-publish`
 }
 
-version = "1.6"
+version = "1.6.0"
 
 dependencies {
     api(libs.org.mariadb.jdbc.mariadb.java.client)

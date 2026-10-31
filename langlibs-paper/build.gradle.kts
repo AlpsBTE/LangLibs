@@ -12,7 +12,7 @@ dependencies {
 
 val versionDetails: groovy.lang.Closure<com.palantir.gradle.gitversion.VersionDetails> by extra
 val details = versionDetails()
-version = "1.6" //+ "-SNAPSHOT" + "+" + details.gitHash
+version = "1.6.0" //+ "-SNAPSHOT" + "+" + details.gitHash
 
 tasks.shadowJar {
     archiveClassifier = ""
