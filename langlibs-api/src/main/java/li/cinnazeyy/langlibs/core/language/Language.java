@@ -36,24 +36,27 @@ public enum Language {
 
     private final String name, region, headId, itemModel;
 
-    private static final Logger logger = LoggerFactory.getLogger(Language.class);
-
     Language() {
-        LanguageConfig config = ConfigUtil.getLanguageConfig();
-        String name, region, headId, itemModel;
+        String name = "undefined";
+        String region = "undefined";
+        String headId = "36076";
+        String itemModel = "";
+        Logger logger = LoggerFactory.getLogger(Language.class);
 
         try {
-            LanguageSection section = (LanguageSection) config.getClass().getMethod(this.name()).invoke(config);
-            name = section.name();
-            region = section.region();
-            headId = section.headId();
-            itemModel = section.itemModel();
+            LanguageConfig config = ConfigUtil.getLanguageConfig();
+            LanguageSection section = config == null ? null
+                    : (LanguageSection) config.getClass().getMethod(this.name()).invoke(config);
+            if (section == null) {
+                logger.warn("Language {} is not defined in languages.yml!", this.name());
+            } else {
+                if (section.name() != null) name = section.name();
+                if (section.region() != null) region = section.region();
+                if (section.headId() != null) headId = section.headId();
+                if (section.itemModel() != null) itemModel = section.itemModel();
+            }
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            name = "undefined";
-            region = "undefined";
-            headId = "36076";
-            itemModel = "";
-            System.out.println("Language " + this.name() + " is not defined in the config.yml!" + e.getMessage());
+            logger.warn("Language {} is not defined in languages.yml! {}", this.name(), e.getMessage());
         }
 
         this.name = name;

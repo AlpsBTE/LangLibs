@@ -9,9 +9,21 @@ import li.cinnazeyy.langlibs.core.data.VelocityDataProvider;
 import li.cinnazeyy.langlibs.core.LangLibAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.ConfigurateException;
+import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import static net.kyori.adventure.text.Component.empty;
 import static net.kyori.adventure.text.Component.text;
@@ -31,9 +43,10 @@ public final class LangLibs extends JavaPlugin {
         createConfig("config.yml");
         createConfig("languages.yml");
         try {
+            updateLanguagesConfigIfNeeded();
             configProvider = new YamlConfigDataProvider();
             ConfigUtil.init(configProvider);
-        } catch (ConfigurateException e) {
+        } catch (IOException e) {
             this.getComponentLogger().warn(text("Could not load configuration files!"), e);
             Bukkit.getConsoleSender().sendMessage(text("The config files must be configured!", YELLOW));
             this.getServer().getPluginManager().disablePlugin(this);
@@ -75,6 +88,54 @@ public final class LangLibs extends JavaPlugin {
     public void createConfig(String configFileName) {
         if (Files.exists(getDataPath().resolve(configFileName))) return;
         saveResource(configFileName, false);
+    }
+
+    /**
+     * Merges newly added language entries from the jar default into an existing
+     * languages.yml when its version is behind, preserving user customizations.
+     */
+    private void updateLanguagesConfigIfNeeded() throws IOException, ConfigurateException {
+        Path languagesPath = getDataPath().resolve("languages.yml");
+        if (!Files.exists(languagesPath)) return;
+
+        YamlConfigurationLoader fileLoader = YamlConfigurationLoader.builder()
+                .path(languagesPath)
+                .build();
+        CommentedConfigurationNode existing = fileLoader.load();
+        int existingVersion = existing.node("version").getInt(0);
+
+        String defaultYaml;
+        try (InputStream in = Objects.requireNonNull(getResource("languages.yml"), "Missing languages.yml resource");
+             BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8))) {
+            defaultYaml = reader.lines().collect(Collectors.joining("\n"));
+        }
+        CommentedConfigurationNode defaults = YamlConfigurationLoader.builder()
+                .source(() -> new BufferedReader(new StringReader(defaultYaml)))
+                .build()
+                .load();
+
+        int defaultVersion = defaults.node("version").getInt(0);
+        if (existingVersion >= defaultVersion) return;
+
+        boolean changed = false;
+        for (Map.Entry<Object, CommentedConfigurationNode> entry : defaults.childrenMap().entrySet()) {
+            Object key = entry.getKey();
+            if ("version".equals(String.valueOf(key))) continue;
+
+            CommentedConfigurationNode target = existing.node(key);
+            if (target.virtual() || target.empty()) {
+                target.from(entry.getValue());
+                changed = true;
+            }
+        }
+
+        existing.node("version").set(defaultVersion);
+        fileLoader.save(existing);
+
+        if (changed) {
+            Bukkit.getConsoleSender().sendMessage(text("Updated languages.yml from v"
+                    + existingVersion + " to v" + defaultVersion + ".", AQUA));
+        }
     }
 
     private boolean initDataProvider() {

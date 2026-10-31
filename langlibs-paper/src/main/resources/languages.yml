@@ -43,6 +43,51 @@ he_IL:
   region: "ישראל"
   headId: "13994"
   itemModel: "item_flag_IL"
+da_DK:
+  name: "Dansk"
+  region: "Danmark"
+  headId: "4411"
+  itemModel: "item_flag_dk"
+es_ES:
+  name: "Español"
+  region: "España"
+  headId: "23236"
+  itemModel: "item_flag_es"
+hu_HU:
+  name: "Magyar"
+  region: "Magyarország"
+  headId: "4284"
+  itemModel: "item_flag_hu"
+it_IT:
+  name: "Italiano"
+  region: "Italia"
+  headId: "21903"
+  itemModel: "item_flag_it"
+nl_NL:
+  name: "Nederlands"
+  region: "Nederland"
+  headId: "17422"
+  itemModel: "item_flag_nl"
+ro_RO:
+  name: "Română"
+  region: "România"
+  headId: "21899"
+  itemModel: "item_flag_ro"
+cs_CZ:
+  name: "čeština"
+  region: "Česko, Česká republika"
+  headId: "2199"
+  itemModel: "item_flag_cs"
+pl_PL:
+  name: "polski"
+  region: "Polska"
+  headId: "65646"
+  itemModel: "item_flag_pl"
+sk_SK:
+  name: "slovenčina"
+  region: "Slovensko"
+  headId: "14662"
+  itemModel: "item_flag_sk"
 custom_1:
   name: ""
   region: ""
@@ -70,4 +115,4 @@ custom_5:
   itemModel: ""
 
 # NOTE: Do not change
-version: 1
+version: 2
