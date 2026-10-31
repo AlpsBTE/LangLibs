@@ -1,6 +1,5 @@
 package li.cinnazeyy.langui;
 
-import com.alpsbte.alpslib.utils.head.AlpsHeadUtils;
 import com.alpsbte.alpslib.utils.item.ItemBuilder;
 import li.cinnazeyy.langlibs.core.LangLibAPI;
 import li.cinnazeyy.langlibs.core.event.LanguageChangeEvent;
@@ -72,7 +71,7 @@ public class LanguageSelectMenu implements Listener {
                 .append(text(")", DARK_GRAY));
 
         return useHeads ?
-                new ItemBuilder(AlpsHeadUtils.getCustomHead(lang.getHeadId())).setName(itemName).build()
+                new ItemBuilder(LangUI.getPlugin().getHeadLookupService().getCustomHead(lang.getHeadId())).setName(itemName).build()
                 : new ItemBuilder(Material.PAPER).setItemModel(lang.getItemModel()).setName(itemName).build();
     }
 

@@ -1,6 +1,6 @@
 package li.cinnazeyy.langui;
 
-import com.alpsbte.alpslib.utils.head.AlpsHeadEventListener;
+import com.alpsbte.alpslib.utils.head.HeadLookupService;
 import li.cinnazeyy.langui.commands.CMD_Language;
 import li.cinnazeyy.langui.util.LangUtil;
 import org.bukkit.Bukkit;
@@ -19,6 +19,8 @@ import static net.kyori.adventure.text.Component.text;
 public final class LangUI extends JavaPlugin {
 
     private static LangUI plugin;
+
+    private HeadLookupService headLookupService;
 
     public static LangUI getPlugin() {
         return plugin;
@@ -39,7 +41,7 @@ public final class LangUI extends JavaPlugin {
         createConfig();
 
         if (LangUI.getPlugin().getConfig().getBoolean("languageSelection.useHeads")) {
-            getServer().getPluginManager().registerEvents(new AlpsHeadEventListener(), this);
+            headLookupService = HeadLookupService.createForPlugin(this).registerEvents(this);
         }
 
         // Load language files
@@ -64,5 +66,9 @@ public final class LangUI extends JavaPlugin {
         } catch (IOException | InvalidConfigurationException e) {
             getLogger().log(Level.SEVERE,e.getMessage());
         }
+    }
+
+    public HeadLookupService getHeadLookupService() {
+        return headLookupService;
     }
 }

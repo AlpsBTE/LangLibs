@@ -2,3 +2,4 @@ name: LangUI
 version: '${version}'
 main: li.cinnazeyy.langui.LangUI
 api-version: '1.21'
+softdepend: [ HeadDB, HeadDatabase ]
