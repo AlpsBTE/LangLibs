@@ -1,4 +1,4 @@
-package li.cinnazeyy.langlibsVelocity;
+package li.cinnazeyy.langlibs.velocity;
 
 import com.google.inject.Inject;
 import com.velocitypowered.api.event.Subscribe;
@@ -10,9 +10,9 @@ import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
 import com.velocitypowered.api.proxy.ServerConnection;
 import com.velocitypowered.api.proxy.messages.MinecraftChannelIdentifier;
-import li.cinnazeyy.langlibsVelocity.config.ConfigLoader;
-import li.cinnazeyy.langlibsVelocity.config.MainConfig;
-import li.cinnazeyy.langlibsVelocity.database.DatabaseConnection;
+import li.cinnazeyy.langlibs.velocity.config.ConfigLoader;
+import li.cinnazeyy.langlibs.velocity.config.MainConfig;
+import li.cinnazeyy.langlibs.velocity.database.DatabaseConnection;
 import org.slf4j.Logger;
 
 import java.nio.charset.StandardCharsets;

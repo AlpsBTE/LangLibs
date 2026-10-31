@@ -1,4 +1,4 @@
-package li.cinnazeyy.langlibsVelocity.config;
+package li.cinnazeyy.langlibs.velocity.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

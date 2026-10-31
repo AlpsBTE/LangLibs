@@ -1,4 +1,4 @@
-package li.cinnazeyy.langlibsVelocity.config;
+package li.cinnazeyy.langlibs.velocity.config;
 
 import org.spongepowered.configurate.objectmapping.ConfigSerializable;
 

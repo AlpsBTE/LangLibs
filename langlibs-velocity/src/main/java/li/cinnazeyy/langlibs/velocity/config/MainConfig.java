@@ -1,12 +1,10 @@
-package li.cinnazeyy.langlibsVelocity.config;
+package li.cinnazeyy.langlibs.velocity.config;
 
 import org.spongepowered.configurate.objectmapping.ConfigSerializable;
 import org.spongepowered.configurate.objectmapping.meta.Setting;
 
 @ConfigSerializable
 public class MainConfig {
-    public MainConfig() {}
-
     @Setting("database")
     private DatabaseCredentials credentials;
 

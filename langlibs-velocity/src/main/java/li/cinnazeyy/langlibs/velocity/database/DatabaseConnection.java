@@ -1,8 +1,8 @@
-package li.cinnazeyy.langlibsVelocity.database;
+package li.cinnazeyy.langlibs.velocity.database;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import li.cinnazeyy.langlibsVelocity.config.DatabaseCredentials;
+import li.cinnazeyy.langlibs.velocity.config.DatabaseCredentials;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
