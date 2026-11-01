@@ -2,12 +2,10 @@ package li.cinnazeyy.langui;
 
 import com.alpsbte.alpslib.utils.item.ItemBuilder;
 import li.cinnazeyy.langlibs.core.LangLibAPI;
-import li.cinnazeyy.langlibs.core.event.LanguageChangeEvent;
 import li.cinnazeyy.langlibs.core.language.Language;
 import li.cinnazeyy.langui.util.LangUtil;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.TextDecoration;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -77,13 +75,11 @@ public class LanguageSelectMenu implements Listener {
 
     private void clickLanguageItem(Language lang) {
         LangLibAPI.setPlayerLang(menuPlayer, lang.toString());
-        LanguageChangeEvent langEvent = new LanguageChangeEvent(menuPlayer, lang);
         menuPlayer.sendMessage(
                 text(Objects.requireNonNull(LangUI.getPlugin().getConfig().getString("info-message-icon")))
                         .append(text(" » ", DARK_GRAY))
-                        .append(text(LangUtil.getInstance().get(menuPlayer, "info.changed-language"), GREEN)));
+                        .append(text(LangUtil.getInstance().get(lang, "info.changed-language"), GREEN)));
         menuPlayer.playSound(menuPlayer.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f);
-        Bukkit.getPluginManager().callEvent(langEvent);
         menu.close(menuPlayer);
     }
 }

@@ -1,0 +1,16 @@
+# Where player language preferences are stored / fetched from.
+# Options: mysql | velocity
+data-source: mysql
+
+database:
+  url: "jdbc:mariadb://localhost:3306/"
+  dbName: "LangLibs"
+  username: "LangLibs"
+  password: "LangLibsPW"
+  maxLifetime: 1800000 # 30 minutes
+  connectionTimeout: 30000 # 30 seconds
+  keepaliveTime: 120000 # 2 minutes
+  maximumPoolSize: 10 # Maximum number of connections in the pool
+
+# NOTE: Do not change
+version: 2

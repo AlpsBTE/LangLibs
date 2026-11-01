@@ -14,10 +14,12 @@ Lang Libs therefore needs to also be run as a standalone plugin as well.
 
 Player language is saved in a SQL database.
 
+Lang Libs can access the database either directly via SQL or via LangLibs-Velocity.
+
 ## Installation
 
 1. Download latest build or build Lang Libs yourself and put it in your plugins folder.
-2. Set database credentials in the plugin's config.yml
+2. Set and configure the data source in the plugin's `config.yml`
 
 ## Implementing Lang Libs in your own Plugin
 

@@ -5,7 +5,9 @@
 rootProject.name = "LangLibs"
 include(":LangLibs-API")
 include(":LangLibs-Paper")
+include(":LangLibs-Velocity")
 include(":LangUI-Paper")
 project(":LangLibs-API").projectDir = file("langlibs-api")
 project(":LangLibs-Paper").projectDir = file("langlibs-paper")
+project(":LangLibs-Velocity").projectDir = file("langlibs-velocity")
 project(":LangUI-Paper").projectDir = file("langui-paper")

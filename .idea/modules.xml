@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/langlibs-api/LangLibs.LangLibs-API.main.iml" filepath="$PROJECT_DIR$/.idea/modules/langlibs-api/LangLibs.LangLibs-API.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/langlibs-paper/LangLibs.LangLibs-Paper.main.iml" filepath="$PROJECT_DIR$/.idea/modules/langlibs-paper/LangLibs.LangLibs-Paper.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/langlibs-velocity/LangLibs.LangLibs-Velocity.main.iml" filepath="$PROJECT_DIR$/.idea/modules/langlibs-velocity/LangLibs.LangLibs-Velocity.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/langui-paper/LangLibs.LangUI-Paper.main.iml" filepath="$PROJECT_DIR$/.idea/modules/langui-paper/LangLibs.LangUI-Paper.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/langlibs-velocity/li.cinnazeyy.LangLibs.LangLibs-Velocity.main.iml" filepath="$PROJECT_DIR$/.idea/modules/langlibs-velocity/li.cinnazeyy.LangLibs.LangLibs-Velocity.main.iml" />
     </modules>
   </component>
 </project>
