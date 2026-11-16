@@ -66,7 +66,6 @@ public class LangLibAPI {
             Bukkit.getScheduler().runTask(plugin, () -> {
                 if (!player.isOnline()) return;
                 fireLanguageChangeEvent(player, lang);
-                player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f);
             });
         });
     }
