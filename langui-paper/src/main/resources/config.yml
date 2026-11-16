@@ -2,3 +2,4 @@ info-message-icon: "\uE13B"
 error-message-icon: "\uE13A"
 languageSelection:
   useHeads: false
+shown-languages: []
