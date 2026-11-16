@@ -31,9 +31,7 @@ import static net.kyori.adventure.text.format.NamedTextColor.*;
 
 public class LanguageSelectMenu implements Listener {
     private static final String SHOWN_LANGUAGES_PATH = "shown-languages";
-    private static final int ITEMS_PER_ROW = 9;
-    private static final int MAX_LANGUAGE_ROWS = 2;
-    private static final int MAX_SHOWN_LANGUAGES = ITEMS_PER_ROW * MAX_LANGUAGE_ROWS;
+    private static final int MAX_SHOWN_LANGUAGES = 18;
     private static final int CLOSE_SLOT = 22;
 
     private final Menu menu;
@@ -56,17 +54,10 @@ public class LanguageSelectMenu implements Listener {
         mask.apply(menu);
 
         List<Language> shownLanguages = getShownLanguages();
-        int firstRow = MAX_LANGUAGE_ROWS - (shownLanguages.size() + ITEMS_PER_ROW - 1) / ITEMS_PER_ROW;
         for (int i = 0; i < shownLanguages.size(); i++) {
-            int row = i / ITEMS_PER_ROW;
-            int rowStart = row * ITEMS_PER_ROW;
-            int itemsInRow = Math.min(ITEMS_PER_ROW, shownLanguages.size() - rowStart);
-            int column = (ITEMS_PER_ROW - itemsInRow) / 2 + i % ITEMS_PER_ROW;
-            int slot = (firstRow + row) * ITEMS_PER_ROW + column;
-
             Language lang = shownLanguages.get(i);
-            menu.getSlot(slot).setItem(getLanguageItem(lang));
-            menu.getSlot(slot).setClickHandler((p, info) -> clickLanguageItem(lang));
+            menu.getSlot(i).setItem(getLanguageItem(lang));
+            menu.getSlot(i).setClickHandler((p, info) -> clickLanguageItem(lang));
         }
 
         menu.getSlot(CLOSE_SLOT).setItem(new ItemBuilder(Material.BARRIER)
