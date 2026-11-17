@@ -20,6 +20,12 @@ tasks.shadowJar {
 
     relocationPrefix = "li.cinnazeyy.langlibs.shaded"
     enableAutoRelocation = true
+
+    // MariaDB Connector/J 3.x loads auth plugins/codecs via ServiceLoader.
+    // INCLUDE + mergeServiceFiles keeps META-INF/services entries and rewrites
+    // them to the shaded package so mysql_native_password (etc.) still resolve.
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    mergeServiceFiles()
 }
 
 tasks.assemble {
